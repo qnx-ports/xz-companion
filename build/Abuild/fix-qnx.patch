@@ -1,0 +1,16 @@
+diff -Naur xz-5.8.1.orig/src/xz/file_io.c xz-5.8.1/src/xz/file_io.c
+--- xz-5.8.1.orig/src/xz/file_io.c	2025-04-03 11:34:58.000000000 +0000
++++ xz-5.8.1/src/xz/file_io.c	2025-12-16 19:56:51.000000000 +0000
+@@ -84,6 +84,12 @@
+ #	define O_SEARCH O_RDONLY
+ #endif
+ 
++// On QNX if you use O_DIRECTORY its expected you will use it with *at functions
++// if you use fsync with a fd opened with O_DIRECTORY it will fail
++#if defined(__QNX__) && defined(O_DIRECTORY)
++#	undef O_DIRECTORY
++#endif
++
+ #ifndef O_DIRECTORY
+ #	define O_DIRECTORY 0
+ #endif
