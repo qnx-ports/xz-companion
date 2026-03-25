@@ -1,6 +1,6 @@
 pkgname=xz
 pkgver=5.8.1
-pkgrel=${pkgrel:-0}
+pkgrel=2
 pkgdesc="Library and CLI tools for XZ and LZMA compressed files"
 url="https://tukaani.org/xz/"
 arch="all"
@@ -52,7 +52,6 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-options="$options ${DISABLE_CHECK:+!check}"
 sha512sums="
 34dbc874a697f4fd17127b3dc828236dd7fd35120a77e0867325273c5d56c4ecddc8a39dce6cbdb3141fff32c56001f4ab18edfa572076d10f2fd55b07ff2b9e  xz-5.8.1.tar.xz
 4795c627888bdb10fabbc668109e7d94a9cdf43818d6c6214cea4f61fb4a20059410346e5ef8e8545c6ea487db17142701f0e17d7c5f88353d3b4690487ac7d1  fix-qnx.patch
